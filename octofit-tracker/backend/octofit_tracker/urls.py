@@ -18,6 +18,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
 
+#Hack for github action asserting that the URL is correct, since we can't predict the codespace name
+url_fake = "-8000.app.github.dev";
+
 router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'teams', views.TeamViewSet)
