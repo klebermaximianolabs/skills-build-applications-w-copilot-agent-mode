@@ -7,11 +7,7 @@ import os
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    codespace_name = os.environ.get('CODESPACE_NAME')
-    if codespace_name:
-        base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
-    else:
-        base_url = "http://localhost:8000/api/"
+    base_url = request.build_absolute_uri('/api/')
     return Response({
         'users': base_url + 'users/',
         'teams': base_url + 'teams/',
